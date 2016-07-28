@@ -7,6 +7,11 @@ raidReadyApp.config(function($stateProvider, $urlRouterProvider) {
       url: "/",
       templateUrl: "views/home.html",
       // controller: 'YourCtrl'
+    })
+    .state('result', {
+      url: "/result",
+      templateUrl: "views/result.html",
+      // controller: 'YourCtrl'
     });
 
     $urlRouterProvider.otherwise('/');

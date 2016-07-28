@@ -1,7 +1,7 @@
-<form action="check" method="post">
+<form ng-submit="search(server, guild)">
   <h3>Server Name:</h3>
-  <input id="server-input" type="text">
+  <input id="server-input" type="text" ng-model="server">
   <h3>Guild Name:</h3>
-  <input id="guild-input" type="text">
+  <input id="guild-input" type="text" ng-model="guild">
   <button id="check-btn" type="submit">Check my Guild</button>
 </form>

@@ -26,9 +26,9 @@ describe("raidReadyApp", function () {
       expect($('#check-btn').getText()).toMatch('Check my Guild');
     });
 
-    xit('Check button should take you to the new url', function () {
+    it('Check button should take you to the new url', function () {
       $('#check-btn').click();
-      expect(browser.getCurrentUrl()).toEqual('http://localhost:8080/check');
+      expect(browser.getCurrentUrl()).toEqual('http://localhost:8080/result');
     });
   });
 });
