@@ -1,0 +1,23 @@
+{
+  "name": "raid-ready",
+  "description": "Check if your guild is ready for raiding",
+  "main": "index.js",
+  "authors": [
+    "Alex Robertson (alex@omgduke.com)"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.5.8"
+  }
+}
