@@ -30,11 +30,25 @@ describe('MainController', function() {
 
   describe('initialization', function() {
     it('is initialized with no server', function() {
-      expect(mainController.server).not.toBeDefined();
+      expect(mainController.serverName).not.toBeDefined();
+    });
+
+    it('is initialized with no guild name', function() {
+      expect(mainController.guildName).not.toBeDefined();
     });
   });
 
   describe('#searchForGuild', function() {
+    it('stores the server name', function() {
+      mainController.searchForGuild('Server1', 'Name1');
+      expect(mainController.serverName).toEqual("Server1");
+    });
+
+    it('stores the server name', function() {
+      mainController.searchForGuild('Server1', 'Name1');
+      expect(mainController.guildName).toEqual("Name1");
+    });
+
     it('stores a list of members', function() {
       mainController.searchForGuild('Server1', 'Name1');
       expect(mainController.membersJSON).toEqual(members);

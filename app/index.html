@@ -9,9 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/controllers/MainController.js"></script>
+    <base href="/">
   </head>
   <body ng-app='raidReadyApp'>
     <h1 id="header">Raid Ready</h1>
-    <section ui-view></section>
+    <section ui-view ng-controller="MainController as main"></section>
   </body>
 </html>

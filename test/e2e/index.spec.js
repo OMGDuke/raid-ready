@@ -25,10 +25,24 @@ describe("raidReadyApp", function () {
     it('should have a Check button', function() {
       expect($('#check-btn').getText()).toMatch('Check my Guild');
     });
+  });
 
-    it('Check button should take you to the new url', function () {
+  describe("Submit form", function() {
+    beforeEach(function() {
+      $('#server-input').sendKeys("Server Name");
+      $('#guild-input').sendKeys("Guild Name");
       $('#check-btn').click();
+    });
+    it('Check button should take you to the new url', function () {
       expect(browser.getCurrentUrl()).toEqual('http://localhost:8080/result');
+    });
+
+    it('Shows your guild name', function() {
+      expect($('#guild-name').getText()).toMatch('Guild Name: Guild Name');
+    });
+
+    it('Shows your server name', function() {
+      expect($('#server-name').getText()).toMatch('Server Name: Server Name');
     });
   });
 });

@@ -1,6 +1,6 @@
 var raidReadyApp = angular.module('raidReadyApp', ['ui.router']);
 
-raidReadyApp.config(function($stateProvider, $urlRouterProvider) {
+raidReadyApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
   $stateProvider
     .state('home', {
@@ -15,4 +15,7 @@ raidReadyApp.config(function($stateProvider, $urlRouterProvider) {
     });
 
     $urlRouterProvider.otherwise('/');
+    if(window.history && window.history.pushState){
+     $locationProvider.html5Mode({enabled: true});
+    }
 });
