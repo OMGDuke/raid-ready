@@ -23,11 +23,7 @@ describe('MainController', function() {
 
   beforeEach(inject(function($controller) {
     spyOn(mockGuildService, 'getMembers')
-      .and.returnValue({
-        then: function(resolve) {
-          resolve(members);
-        }
-    });
+      .and.returnValue(members);
     mainController = $controller('MainController', {
     });
   }));

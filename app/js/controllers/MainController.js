@@ -5,6 +5,6 @@ angular.module('raidReadyApp')
     self.membersJSON = {};
 
     self.searchForGuild = function(server, guild) {
-      return GuildService.getMembers();
+      self.membersJSON =  GuildService.getMembers(server, guild);
     };
   });
