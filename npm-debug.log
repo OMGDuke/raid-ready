@@ -29,7 +29,7 @@
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:215:5)
 15 verbose pkgid raid-ready@1.0.0
 16 verbose cwd /Users/alex/Dropbox/dev/code/js/raid-ready
-17 error Darwin 15.5.0
+17 error Darwin 15.6.0
 18 error argv "/usr/local/Cellar/node/6.2.1/bin/node" "/usr/local/bin/npm" "run" "protractor" "test/protractor.conf.js"
 19 error node v6.2.1
 20 error npm  v3.9.3

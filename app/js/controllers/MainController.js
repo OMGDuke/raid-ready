@@ -1,9 +1,10 @@
 angular.module('raidReadyApp')
-  .controller('MainController', function($state){
+  .controller('MainController', function($state, GuildService){
 
     var self = this;
+    self.membersJSON = {};
 
-    function compareIngredients(user, product) {
-
-    }
+    self.searchForGuild = function(server, guild) {
+      return GuildService.getMembers();
+    };
   });
