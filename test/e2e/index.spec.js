@@ -29,13 +29,15 @@ describe("raidReadyApp", function () {
 
   describe("Submit form", function() {
     beforeEach(function() {
+
+      // browser.sleep(5000);
+      // browser.waitForAngular();
+    });
+    it('Check button should take you to the new url', function () {
       $('#server-input').sendKeys("Server Name");
       $('#guild-input').sendKeys("Guild Name");
       $('#check-btn').click();
-      browser.waitForAngular();
-    });
-    it('Check button should take you to the new url', function () {
-      expect(browser.getCurrentUrl()).toEqual('http://localhost:8080/result');
+      expect(browser.getCurrentUrl()).toMatch('http://localhost:8080/result');
     });
 
     it('Shows your guild name', function() {

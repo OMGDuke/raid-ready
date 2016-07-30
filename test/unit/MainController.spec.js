@@ -1,7 +1,6 @@
 describe('MainController', function() {
 
   var MainController;
-  var mockGuildService = { getMembers: null };
   var members = [{
     "character": {
       "name": "bob",
@@ -14,6 +13,11 @@ describe('MainController', function() {
       "role": "HEALING"
     }
   }];
+  var mockGuildService = { getMembers: function() {
+    return {
+      then: function(callback) {return callback(members);}
+    };
+  }};
 
   beforeEach(function() {
     module('raidReadyApp', function($provide) {
@@ -23,7 +27,7 @@ describe('MainController', function() {
 
   beforeEach(inject(function($controller) {
     spyOn(mockGuildService, 'getMembers')
-      .and.returnValue(members);
+      .and.callThrough();
     mainController = $controller('MainController', {
     });
   }));
@@ -51,7 +55,7 @@ describe('MainController', function() {
 
     it('stores a list of members', function() {
       mainController.searchForGuild('Server1', 'Name1');
-      expect(mainController.membersJSON).toEqual(members);
+      expect(mainController.members).toEqual(members);
     });
   });
 });

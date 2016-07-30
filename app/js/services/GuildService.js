@@ -6,10 +6,9 @@ angular.module('raidReadyApp')
 
     self.getMembers = function(apiUrl, server, guild) {
       var formattedUrl = _formatUrl(apiUrl, server, guild);
-      return _getDatafromApi(formattedUrl)
-        .then(function(response) {
-          return _handleResponse(response.data);
-        });
+      return _getDatafromApi(formattedUrl).then(function(response) {
+        return _handleResponse(response.data);
+      });
     };
 
     function _getDatafromApi(formattedUrl){
@@ -21,7 +20,6 @@ angular.module('raidReadyApp')
     }
 
     function _handleResponse(response) {
-      console.log(response);
-      self.members = response.members;
+      return response.members;
     }
   }]);
