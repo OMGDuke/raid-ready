@@ -32,6 +32,7 @@ describe("raidReadyApp", function () {
       $('#server-input').sendKeys("Server Name");
       $('#guild-input').sendKeys("Guild Name");
       $('#check-btn').click();
+      browser.waitForAngular();
     });
     it('Check button should take you to the new url', function () {
       expect(browser.getCurrentUrl()).toEqual('http://localhost:8080/result');

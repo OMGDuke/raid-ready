@@ -8,7 +8,11 @@ angular.module('raidReadyApp')
     self.searchForGuild = function(server, guild) {
       self.serverName = server;
       self.guildName = guild;
-      self.membersJSON =  GuildService.getMembers(apiUrl, server, guild);
-      $state.go("result");
+      GuildService.getMembers(apiUrl, server, guild)
+      .then(function() {
+        self.membersJSON = GuildService.members;
+        console.log(self.membersJSON);
+        $state.go("result");
+      });
     };
   });

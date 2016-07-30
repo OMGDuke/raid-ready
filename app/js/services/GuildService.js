@@ -22,9 +22,6 @@ angular.module('raidReadyApp')
 
     function _handleResponse(response) {
       console.log(response);
-      console.log(response.members);
-      console.log(response.members[0].character.name);
-      return response.members[0].character.name;
+      self.members = response.members;
     }
-
   }]);

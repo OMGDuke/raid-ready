@@ -7,15 +7,12 @@ describe('GuildService', function(){
   var guildName = 'Guild%20Name';
   var serverName = "Server%20Name";
 
-  var apiResponse = {
-    "name": "The Guild",
-    "realm": "Draenor",
-    "members": [{
+  var apiResponse =
+    [{
       "character": {"name": "Jim", "spec": {"name": "Protection", "role": "TANK"}}
     }, {
       "character": { "name": "Bob", "spec": { "name": "Elemental", "role": "DPS"}}
-    }]
-  };
+    }];
 
 
 
@@ -28,7 +25,7 @@ describe('GuildService', function(){
     httpBackend.expectGET(apiUrl[0] + serverName + '/' + guildName + apiUrl[1] + "1234").respond(apiResponse);
     httpBackend.whenGET(/views.*/).respond(200, '');
     GuildService.getMembers(apiUrl, serverName, guildName).then(function(response){
-      expect(response).toEqual(apiResponse);
+      expect(GuildService.members).toEqual(apiResponse);
     });
     httpBackend.flush();
   });

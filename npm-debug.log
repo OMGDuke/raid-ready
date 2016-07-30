@@ -1,0 +1,50 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/Cellar/node/6.2.1/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'protractor',
+1 verbose cli   'test/protractor.conf.js' ]
+2 info using npm@3.9.3
+3 info using node@v6.2.1
+4 verbose run-script [ 'preprotractor', 'protractor', 'postprotractor' ]
+5 info lifecycle raid-ready@1.0.0~preprotractor: raid-ready@1.0.0
+6 silly lifecycle raid-ready@1.0.0~preprotractor: no script for preprotractor, continuing
+7 info lifecycle raid-ready@1.0.0~protractor: raid-ready@1.0.0
+8 verbose lifecycle raid-ready@1.0.0~protractor: unsafe-perm in lifecycle true
+9 verbose lifecycle raid-ready@1.0.0~protractor: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/alex/Dropbox/dev/code/js/raid-ready/node_modules/.bin:/usr/local/Cellar/node/6.2.1/bin:/Users/alex/.rvm/gems/ruby-2.1.5/bin:/Users/alex/.rvm/gems/ruby-2.1.5@global/bin:/Users/alex/.rvm/rubies/ruby-2.1.5/bin:/Users/alex/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/alex/.rvm/bin
+10 verbose lifecycle raid-ready@1.0.0~protractor: CWD: /Users/alex/Dropbox/dev/code/js/raid-ready
+11 silly lifecycle raid-ready@1.0.0~protractor: Args: [ '-c',
+11 silly lifecycle   './node_modules/protractor/bin/protractor "test/protractor.conf.js"' ]
+12 silly lifecycle raid-ready@1.0.0~protractor: Returned: code: 1  signal: null
+13 info lifecycle raid-ready@1.0.0~protractor: Failed to exec protractor script
+14 verbose stack Error: raid-ready@1.0.0 protractor: `./node_modules/protractor/bin/protractor "test/protractor.conf.js"`
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:245:16)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at EventEmitter.emit (events.js:191:7)
+14 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:24:14)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at ChildProcess.emit (events.js:191:7)
+14 verbose stack     at maybeClose (internal/child_process.js:852:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:215:5)
+15 verbose pkgid raid-ready@1.0.0
+16 verbose cwd /Users/alex/Dropbox/dev/code/js/raid-ready
+17 error Darwin 15.6.0
+18 error argv "/usr/local/Cellar/node/6.2.1/bin/node" "/usr/local/bin/npm" "run" "protractor" "test/protractor.conf.js"
+19 error node v6.2.1
+20 error npm  v3.9.3
+21 error code ELIFECYCLE
+22 error raid-ready@1.0.0 protractor: `./node_modules/protractor/bin/protractor "test/protractor.conf.js"`
+22 error Exit status 1
+23 error Failed at the raid-ready@1.0.0 protractor script './node_modules/protractor/bin/protractor "test/protractor.conf.js"'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the raid-ready package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     ./node_modules/protractor/bin/protractor "test/protractor.conf.js"
+23 error You can get information on how to open an issue for this project with:
+23 error     npm bugs raid-ready
+23 error Or if that isn't available, you can get their info via:
+23 error     npm owner ls raid-ready
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]
