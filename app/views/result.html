@@ -1,7 +1,8 @@
 <h1>RESULT</h1>
 <h3 id="guild-name">Guild Name: {{main.guildName}}</h3>
 <h3 id="server-name">Server Name: {{main.serverName}}</h3>
-<p> Members: {{main.members.length}}</p>
-<div ng-repeat="char in main.members">
-  <p>Character Name: {{char.character.name}}</p>
+<p id="member-count"> Members: {{main.members.length}}</p>
+<h3>Tanks:</h3>
+<div ng-repeat="char in main.tanks">
+  <p id="tank-list-item">Character Name: {{char.character.name}}</p>
 </div>

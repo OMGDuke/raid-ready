@@ -48,25 +48,42 @@ describe('MainController', function() {
     });
   });
 
+  describe('#findLevelAppropriate', function() {
+    it('returns a list of characters at level 100', function() {
+      mainController.findLevelAppropriate(apiJSON.members);
+      expect(mainController.level100Members.length).toEqual(15);
+    });
+  });
+
+  describe('#findCharactersWithSpecs', function() {
+    it('returns a list of characters who have the spec key', function() {
+      mainController.findCharactersWithSpecs(apiJSON.members);
+      expect(mainController.filteredChars.length).toEqual(16);
+    });
+  });
+
   describe('#findTanks', function() {
     it('returns a list of characters with the tank role', function() {
-      expect(mainController.findTanks(apiJSON.members).length).toEqual(2);
+      mainController.findTanks(apiJSON.members);
+      expect(mainController.tanks.length).toEqual(2);
     });
   });
 
   describe('#findDPS', function() {
     it('returns a list of characters with the DPS role', function() {
-      expect(mainController.findDPS(apiJSON.members).length).toEqual(9);
+      mainController.findDPS(apiJSON.members);
+      expect(mainController.dps.length).toEqual(10);
     });
   });
 
   describe('#findHealers', function() {
     it('returns a list of characters with the DPS role', function() {
-      expect(mainController.findHealers(apiJSON.members).length).toEqual(4);
+      mainController.findHealers(apiJSON.members);
+      expect(mainController.healers.length).toEqual(4);
     });
   });
 
-  var apiJSON = {members:[{
+  var apiJSON = {realm:"Server1", name:"Name1", members:[{
     "character": {
       "name": "A",
       "realm": "Draenor",
@@ -426,6 +443,30 @@ describe('MainController', function() {
              "lastModified": 0
          },
          "rank": 6
-       }]};
+       }, {
+           "character": {
+               "name": "S",
+               "realm": "Draenor",
+               "battlegroup": "Embuscade / Hinterhalt",
+               "class": 5,
+               "race": 5,
+               "gender": 0,
+               "level": 99,
+               "achievementPoints": 9220,
+               "thumbnail": "gnomeregan/8/104114952-avatar.jpg",
+               "spec": {
+                   "name": "Shadow",
+                   "role": "DPS",
+                   "backgroundImage": "bg-priest-shadow",
+                   "icon": "spell_shadow_shadowwordpain",
+                   "description": "Uses sinister Shadow magic, especially damage-over-time spells, to eradicate enemies.",
+                   "order": 2
+               },
+               "guild": "Over Raided",
+               "guildRealm": "Draenor",
+               "lastModified": 0
+           },
+           "rank": 6
+         }]};
 
    });
