@@ -1,21 +1,10 @@
 describe('MainController', function() {
 
   var MainController;
-  var members = [{
-    "character": {
-      "name": "bob",
-      "role": "TANK"
-    }
-  },
-  {
-    "character": {
-      "name": "john",
-      "role": "HEALING"
-    }
-  }];
+
   var mockGuildService = { getMembers: function() {
     return {
-      then: function(callback) {return callback(members);}
+      then: function(callback) {return callback(apiJSON);}
     };
   }};
 
@@ -55,7 +44,388 @@ describe('MainController', function() {
 
     it('stores a list of members', function() {
       mainController.searchForGuild('Server1', 'Name1');
-      expect(mainController.members).toEqual(members);
+      expect(mainController.members).toEqual(apiJSON.members);
     });
   });
-});
+
+  describe('#findTanks', function() {
+    it('returns a list of characters with the tank role', function() {
+      expect(mainController.findTanks(apiJSON.members).length).toEqual(2);
+    });
+  });
+
+  describe('#findDPS', function() {
+    it('returns a list of characters with the DPS role', function() {
+      expect(mainController.findDPS(apiJSON.members).length).toEqual(9);
+    });
+  });
+
+  describe('#findHealers', function() {
+    it('returns a list of characters with the DPS role', function() {
+      expect(mainController.findHealers(apiJSON.members).length).toEqual(4);
+    });
+  });
+
+  var apiJSON = {members:[{
+    "character": {
+      "name": "A",
+      "realm": "Draenor",
+       "battlegroup": "Embuscade / Hinterhalt",
+       "class": 2,
+       "race": 10,
+       "gender": 0,
+       "level": 100,
+       "achievementPoints": 2650,
+       "thumbnail": "gnomeregan/189/87609533-avatar.jpg",
+       "spec": {
+         "name": "Holy",
+         "role": "HEALING",
+         "backgroundImage": "bg-paladin-protection",
+         "icon": "ability_paladin_shieldofthetemplar",
+         "description": "Uses Holy magic to shield himself and defend allies from attackers.",
+         "order": 1
+       },
+       "guild": "Over Raided",
+       "guildRealm": "Draenor",
+       "lastModified": 0
+     },
+     "rank": 7
+   }, {
+         "character": {
+             "name": "Jarlstrom",
+             "realm": "Draenor",
+             "battlegroup": "Embuscade / Hinterhalt",
+             "class": 7,
+             "race": 9,
+             "gender": 1,
+             "level": 100,
+             "achievementPoints": 7980,
+             "thumbnail": "gnomeregan/157/88055709-avatar.jpg",
+             "spec": {
+                 "name": "Restoration",
+                 "role": "HEALING",
+                 "backgroundImage": "bg-shaman-enhancement",
+                 "icon": "spell_shaman_improvedstormstrike",
+                 "description": "A totemic warrior who strikes foes with weapons imbued with elemental power.",
+                 "order": 1
+             },
+             "guild": "Over Raided",
+             "guildRealm": "Draenor",
+             "lastModified": 0
+         },
+         "rank": 5
+     }, {
+         "character": {
+             "name": "Picklocked",
+             "realm": "Draenor",
+             "battlegroup": "Embuscade / Hinterhalt",
+             "class": 9,
+             "race": 2,
+             "gender": 1,
+             "level": 100,
+             "achievementPoints": 10840,
+             "thumbnail": "gnomeregan/144/88199312-avatar.jpg",
+             "spec": {
+                 "name": "Demonology",
+                 "role": "DPS",
+                 "backgroundImage": "bg-warlock-demonology",
+                 "icon": "spell_shadow_metamorphosis",
+                 "description": "A master of demons who compels demonic powers to aid him.",
+                 "order": 1
+             },
+             "guild": "Over Raided",
+             "guildRealm": "Draenor",
+             "lastModified": 0
+         },
+         "rank": 6
+     }, {
+         "character": {
+             "name": "Brandwag",
+             "realm": "Draenor",
+             "battlegroup": "Embuscade / Hinterhalt",
+             "class": 6,
+             "race": 2,
+             "gender": 0,
+             "level": 100,
+             "achievementPoints": 4295,
+             "thumbnail": "gnomeregan/82/93354066-avatar.jpg",
+             "spec": {
+                 "name": "Frost",
+                 "role": "DPS",
+                 "backgroundImage": "bg-deathknight-frost",
+                 "icon": "spell_deathknight_frostpresence",
+                 "description": "An icy harbinger of doom, channeling runic power and delivering vicious weapon strikes.",
+                 "order": 1
+             },
+             "guild": "Over Raided",
+             "guildRealm": "Draenor",
+             "lastModified": 0
+         },
+         "rank": 7
+     }, {
+         "character": {
+             "name": "Kiyuko",
+             "realm": "Draenor",
+             "battlegroup": "Embuscade / Hinterhalt",
+             "class": 10,
+             "race": 26,
+             "gender": 1,
+             "level": 100,
+             "achievementPoints": 8040,
+             "thumbnail": "gnomeregan/114/96531826-avatar.jpg",
+             "spec": {
+                 "name": "Mistweaver",
+                 "role": "HEALING",
+                 "backgroundImage": "bg-monk-battledancer",
+                 "icon": "spell_monk_windwalker_spec",
+                 "description": "A martial artist without peer who pummels foes with hands and fists.",
+                 "order": 2
+             },
+             "guild": "Over Raided",
+             "guildRealm": "Draenor",
+             "lastModified": 0
+         },
+         "rank": 6
+     }, {
+         "character": {
+             "name": "Yurtz",
+             "realm": "Draenor",
+             "battlegroup": "Embuscade / Hinterhalt",
+             "class": 6,
+             "race": 2,
+             "gender": 0,
+             "level": 100,
+             "achievementPoints": 9220,
+             "thumbnail": "gnomeregan/22/103898646-avatar.jpg",
+             "spec": {
+                 "name": "Frost",
+                 "role": "DPS",
+                 "backgroundImage": "bg-deathknight-frost",
+                 "icon": "spell_deathknight_frostpresence",
+                 "description": "An icy harbinger of doom, channeling runic power and delivering vicious weapon strikes.",
+                 "order": 1
+             },
+             "guild": "Over Raided",
+             "guildRealm": "Draenor",
+             "lastModified": 0
+         },
+         "rank": 6
+     }, {
+         "character": {
+             "name": "Ragefangz",
+             "realm": "Draenor",
+             "battlegroup": "Embuscade / Hinterhalt",
+             "class": 11,
+             "race": 8,
+             "gender": 0,
+             "level": 100,
+             "achievementPoints": 19135,
+             "thumbnail": "gnomeregan/41/104001833-avatar.jpg",
+             "spec": {
+                 "name": "Feral",
+                 "role": "DPS",
+                 "backgroundImage": "bg-druid-cat",
+                 "icon": "ability_druid_catform",
+                 "description": "Takes on the form of a great cat to deal damage with bleeds and bites.",
+                 "order": 1
+             },
+             "guild": "Over Raided",
+             "guildRealm": "Draenor",
+             "lastModified": 0
+         },
+         "rank": 6
+     }, {
+         "character": {
+             "name": "Evius",
+             "realm": "Draenor",
+             "battlegroup": "Embuscade / Hinterhalt",
+             "class": 2,
+             "race": 10,
+             "gender": 0,
+             "level": 100,
+             "achievementPoints": 9220,
+             "thumbnail": "gnomeregan/203/104008139-avatar.jpg",
+             "spec": {
+                 "name": "Holy",
+                 "role": "HEALING",
+                 "backgroundImage": "bg-paladin-holy",
+                 "icon": "spell_holy_holybolt",
+                 "description": "Invokes the power of the Light to protect and to heal.",
+                 "order": 0
+             },
+             "guild": "Over Raided",
+             "guildRealm": "Draenor",
+             "lastModified": 0
+         },
+         "rank": 0
+     }, {
+       "character": {
+           "name": "Q",
+           "realm": "Draenor",
+           "battlegroup": "Embuscade / Hinterhalt",
+           "class": 4,
+           "race": 5,
+           "gender": 1,
+           "level": 100,
+           "achievementPoints": 55,
+           "thumbnail": "gnomeregan/22/104027414-avatar.jpg",
+           "spec": {
+               "name": "Subtlety",
+               "role": "DPS",
+               "backgroundImage": "bg-rogue-subtlety",
+               "icon": "ability_stealth",
+               "description": "A dark stalker who leaps from the shadows to ambush his unsuspecting prey.",
+               "order": 2
+           },
+           "guild": "Over Raided",
+           "guildRealm": "Draenor",
+           "lastModified": 0
+       },
+       "rank": 7
+     }, {
+         "character": {
+             "name": "Ashke",
+             "realm": "Draenor",
+             "battlegroup": "Embuscade / Hinterhalt",
+             "class": 4,
+             "race": 5,
+             "gender": 1,
+             "level": 100,
+             "achievementPoints": 55,
+             "thumbnail": "gnomeregan/22/104027414-avatar.jpg",
+             "spec": {
+                 "name": "Subtlety",
+                 "role": "DPS",
+                 "backgroundImage": "bg-rogue-subtlety",
+                 "icon": "ability_stealth",
+                 "description": "A dark stalker who leaps from the shadows to ambush his unsuspecting prey.",
+                 "order": 2
+             },
+             "guild": "Over Raided",
+             "guildRealm": "Draenor",
+             "lastModified": 0
+         },
+         "rank": 7
+     }, {
+         "character": {
+             "name": "Omgduke",
+             "realm": "Draenor",
+             "battlegroup": "Embuscade / Hinterhalt",
+             "class": 2,
+             "race": 10,
+             "gender": 0,
+             "level": 100,
+             "achievementPoints": 8940,
+             "thumbnail": "gnomeregan/238/104048110-avatar.jpg",
+             "spec": {
+                 "name": "Protection",
+                 "role": "TANK",
+                 "backgroundImage": "bg-paladin-protection",
+                 "icon": "ability_paladin_shieldofthetemplar",
+                 "description": "Uses Holy magic to shield himself and defend allies from attackers.",
+                 "order": 1
+             },
+             "guild": "Over Raided",
+             "guildRealm": "Draenor",
+             "lastModified": 0
+         },
+         "rank": 1
+     }, {
+         "character": {
+             "name": "Mentathiel",
+             "realm": "Draenor",
+             "battlegroup": "Embuscade / Hinterhalt",
+             "class": 11,
+             "race": 8,
+             "gender": 1,
+             "level": 100,
+             "achievementPoints": 8040,
+             "thumbnail": "gnomeregan/152/104055704-avatar.jpg",
+             "spec": {
+                 "name": "Guardian",
+                 "role": "TANK",
+                 "backgroundImage": "bg-druid-bear",
+                 "icon": "ability_racial_bearform",
+                 "description": "Takes on the form of a mighty bear to absorb damage and protect allies.",
+                 "order": 2
+             },
+             "guild": "Over Raided",
+             "guildRealm": "Draenor",
+             "lastModified": 0
+         },
+         "rank": 1
+     }, {
+         "character": {
+             "name": "Dkisoriginal",
+             "realm": "Draenor",
+             "battlegroup": "Embuscade / Hinterhalt",
+             "class": 6,
+             "race": 10,
+             "gender": 0,
+             "level": 100,
+             "achievementPoints": 8280,
+             "thumbnail": "gnomeregan/219/104056027-avatar.jpg",
+             "spec": {
+                 "name": "Frost",
+                 "role": "DPS",
+                 "backgroundImage": "bg-deathknight-frost",
+                 "icon": "spell_deathknight_frostpresence",
+                 "description": "An icy harbinger of doom, channeling runic power and delivering vicious weapon strikes.",
+                 "order": 1
+             },
+             "guild": "Over Raided",
+             "guildRealm": "Draenor",
+             "lastModified": 0
+         },
+         "rank": 6
+     }, {
+         "character": {
+             "name": "Typikillyou",
+             "realm": "Draenor",
+             "battlegroup": "Embuscade / Hinterhalt",
+             "class": 3,
+             "race": 9,
+             "gender": 0,
+             "level": 100,
+             "achievementPoints": 8275,
+             "thumbnail": "gnomeregan/181/104059061-avatar.jpg",
+             "spec": {
+                 "name": "Marksmanship",
+                 "role": "DPS",
+                 "backgroundImage": "bg-hunter-marksman",
+                 "icon": "ability_hunter_focusedaim",
+                 "description": "A master archer or sharpshooter who excels in bringing down enemies from afar.",
+                 "order": 1
+             },
+             "guild": "Over Raided",
+             "guildRealm": "Draenor",
+             "lastModified": 0
+         },
+         "rank": 3
+     }, {
+         "character": {
+             "name": "Macarius",
+             "realm": "Draenor",
+             "battlegroup": "Embuscade / Hinterhalt",
+             "class": 5,
+             "race": 5,
+             "gender": 0,
+             "level": 100,
+             "achievementPoints": 9220,
+             "thumbnail": "gnomeregan/8/104114952-avatar.jpg",
+             "spec": {
+                 "name": "Shadow",
+                 "role": "DPS",
+                 "backgroundImage": "bg-priest-shadow",
+                 "icon": "spell_shadow_shadowwordpain",
+                 "description": "Uses sinister Shadow magic, especially damage-over-time spells, to eradicate enemies.",
+                 "order": 2
+             },
+             "guild": "Over Raided",
+             "guildRealm": "Draenor",
+             "lastModified": 0
+         },
+         "rank": 6
+       }]};
+
+   });

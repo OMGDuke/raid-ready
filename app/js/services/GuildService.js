@@ -20,6 +20,6 @@ angular.module('raidReadyApp')
     }
 
     function _handleResponse(response) {
-      return response.members;
+      return response;
     }
   }]);
