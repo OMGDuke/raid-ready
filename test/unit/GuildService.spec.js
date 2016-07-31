@@ -14,18 +14,18 @@ describe('GuildService', function(){
       "character": { "name": "Bob", "spec": { "name": "Elemental", "role": "DPS"}}
     }];
 
-
-
   beforeEach(inject(function($httpBackend, _GuildService_){
     httpBackend = $httpBackend;
     GuildService = _GuildService_;
   }));
 
   it('receives guild data from the API', function(){
-    httpBackend.expectGET(apiUrl[0] + serverName + '/' + guildName + apiUrl[1] + "1234").respond(apiResponse);
+
+    httpBackend.expectGET(apiUrl[0] + serverName + '/' + guildName + apiUrl[1] + "1234").respond("apiResponse");
     httpBackend.whenGET(/views.*/).respond(200, '');
-    GuildService.getMembers(apiUrl, serverName, guildName).then(function(response){
-      expect(GuildService.members).toEqual(apiResponse);
+    GuildService.getMembers(apiUrl, serverName, guildName)
+    .then(function(response){
+      expect(response).toEqual(apiResponse);
     });
     httpBackend.flush();
   });

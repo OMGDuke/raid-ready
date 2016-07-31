@@ -29,23 +29,20 @@ describe("raidReadyApp", function () {
 
   describe("Submit form", function() {
     beforeEach(function() {
-
-      // browser.sleep(5000);
-      // browser.waitForAngular();
+      $('#server-input').sendKeys("Draenor");
+      $('#guild-input').sendKeys("Over Raided");
+      $('#check-btn').click();
     });
     it('Check button should take you to the new url', function () {
-      $('#server-input').sendKeys("Server Name");
-      $('#guild-input').sendKeys("Guild Name");
-      $('#check-btn').click();
       expect(browser.getCurrentUrl()).toMatch('http://localhost:8080/result');
     });
 
     it('Shows your guild name', function() {
-      expect($('#guild-name').getText()).toMatch('Guild Name: Guild Name');
+      expect($('#guild-name').getText()).toMatch('Guild Name: Over Raided');
     });
 
     it('Shows your server name', function() {
-      expect($('#server-name').getText()).toMatch('Server Name: Server Name');
+      expect($('#server-name').getText()).toMatch('Server Name: Draenor');
     });
   });
 });

@@ -1,9 +1,9 @@
-<form ng-submit="main.searchForGuild(server, guild)">
+<form ng-submit="main.searchForGuild(server, guild)" role="form">
   <h3>Server Name:</h3>
-  <input id="server-input" type="text" ng-model="server">
+  <input id="server-input" type="search" required="required" ng-model="server">
   <h3>Guild Name:</h3>
-  <input id="guild-input" type="text" ng-model="guild">
-  <button id="check-btn">Check my Guild</button>
+  <input id="guild-input" type="search" required="required" ng-model="guild">
+  <button id="check-btn" type="submit" class="button">Check my Guild</button>
 </form>
 <p>TEST BUTTON</p>
 <button id="or-btn" ng-click="main.searchForGuild('Draenor', 'Over Raided')">Over Raided</button>
