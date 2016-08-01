@@ -43,8 +43,31 @@ describe("raidReadyApp", function () {
   });
 
   describe("Ready for?", function() {
+    it("starts with no ready for", function() {
+      expect(element(by.id('ready')).isDisplayed()).toBeFalsy();
+    });
+
     it("tells you whether you're ready for 10s", function() {
-      expect($('#ready-10').getText()).toMatch("Ready for 10s? Yes");
+      element(by.cssContainingText('option', '10')).click();
+      expect($('#ready').getText()).toEqual('Ready for 10s? Yes');
+    });
+    it("hides 10s message when you select another size", function() {
+      element(by.cssContainingText('option', '10')).click();
+      element(by.cssContainingText('option', '20')).click();
+      expect($('#ready').getText()).toEqual('Ready for 20s? No');
+    });
+  });
+
+  describe("Missing", function() {
+    it("starts with no missing", function() {
+      expect(element(by.id('missing-tank')).isDisplayed()).toBeFalsy();
+      expect(element(by.id('missing-heal')).isDisplayed()).toBeFalsy();
+      expect(element(by.id('missing-dps')).isDisplayed()).toBeFalsy();
+    });
+
+    it("shows 2 missing healers for 20 man", function() {
+      element(by.cssContainingText('option', '20')).click();
+      expect($('#missing-heal').getText()).toEqual('2 Healer(s) Missing');
     });
   });
 });

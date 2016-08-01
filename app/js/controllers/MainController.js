@@ -63,16 +63,16 @@ angular.module('raidReadyApp')
     };
 
     self.readyFor = function(raidSize) {
-      if(raidSize === 10) {
+      if(raidSize === "10") {
         return self.numberCheck(2, 3, 5) ? "Yes" : "No";
-      } else if (raidSize === 15) {
+      } else if (raidSize === "15") {
         return self.numberCheck(2, 4, 9) ? "Yes" : "No";
-      } else if (raidSize === 20) {
+      } else if (raidSize === "20") {
         return self.numberCheck(3, 5, 12) ? "Yes" : "No";
-      } else if (raidSize === 25) {
-        return self.numberCheck(3, 5, 12) ? "Yes" : "No";
-      } else if (raidSize === 30) {
-        return self.numberCheck(3, 5, 12) ? "Yes" : "No";
+      } else if (raidSize === "25") {
+        return self.numberCheck(3, 6, 16) ? "Yes" : "No";
+      } else if (raidSize === "30") {
+        return self.numberCheck(3, 6, 21) ? "Yes" : "No";
       }
     };
 
@@ -80,11 +80,29 @@ angular.module('raidReadyApp')
       return self.tanks.length >= tanks && self.healers.length >= healers && self.dps.length >= dps;
     };
 
-    self.missingRoles = function(requirements) {
-      self.neededTanks = self.missingTanks(requirements[0]);
+
+    self.missingRoleCalc = function(role, raidSize) {
+      if(role === "tank") {
+        return self.neededRoles(raidSize)[0] - self.tanks.length;
+      } else if(role === "healer") {
+        return self.neededRoles(raidSize)[1] - self.healers.length;
+      } else if(role === "dps") {
+        return self.neededRoles(raidSize)[2] - self.dps.length;
+      }
     };
 
-    self.missingTanks = function(neededTanks) {
-      return neededTanks - self.tanks.length;
+
+    self.neededRoles = function(raidSize) {
+      if(raidSize === "10") {
+        return [2, 3, 5];
+      } else if (raidSize === "15") {
+        return [2, 4, 9];
+      } else if (raidSize === "20") {
+        return [3, 5, 12];
+      } else if (raidSize === "25") {
+        return [3, 6, 16];
+      } else if (raidSize === "30") {
+        return [3, 6, 21];
+      }
     };
   });

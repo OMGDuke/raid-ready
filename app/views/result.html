@@ -2,11 +2,18 @@
 <h3 id="guild-name">Guild Name: {{main.guildName}}</h3>
 <h3 id="server-name">Server Name: {{main.serverName}}</h3>
 <p id="member-count"> Members: {{main.members.length}}</p>
-<h3 id="ready-10">Ready for 10s? {{main.readyFor(10)}}</h3>
-<h3 id="ready-15">Ready for 15s? {{main.readyFor(15)}}</h3>
-<h3 id="ready-20">Ready for 20s? {{main.readyFor(20)}}</h3>
-<h3 id="ready-25">Ready for 25s? {{main.readyFor(25)}}</h3>
-<h3 id="ready-30">Ready for 30s? {{main.readyFor(30)}}</h3>
+<label for="singleSelect">Raid Size</label>
+<select name="singleSelect" ng-model="singleSelect" ng-selected="10">
+  <option value="10">10 Man</option>
+  <option value="15" ng-selected="selected">15 Man</option>
+  <option value="20">20 Man</option>
+  <option value="25">25 Man</option>
+  <option value="30">30 Man</option>
+</select><br>
+<h3 id="ready" ng-show="singleSelect">Ready for {{singleSelect}}s? {{main.readyFor(singleSelect)}}</h3>
+<h3 id="missing-tank" ng-show="singleSelect && main.missingRoleCalc('tank', singleSelect) > 0">{{main.missingRoleCalc('tank', singleSelect)}} Tank(s) Missing</h3>
+<h3 id="missing-heal" ng-show="singleSelect && main.missingRoleCalc('healer', singleSelect) > 0">{{main.missingRoleCalc('healer', singleSelect)}} Healer(s) Missing</h3>
+<h3 id="missing-dps" ng-show="singleSelect && main.missingRoleCalc('dps', singleSelect) > 0">{{main.missingRoleCalc('dps', singleSelect)}} DPS(s) Missing</h3>
 <h3>Tanks:</h3>
 <div ng-repeat="char in main.tanks">
   <p id="tank-list-item">Name: {{char.character.name}}</p>

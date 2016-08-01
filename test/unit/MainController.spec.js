@@ -86,17 +86,17 @@ describe('MainController', function() {
   describe("#readyFor()", function() {
     it('takes in a raid size of 10 and returns Yes', function() {
       mainController.findRoles(apiJSON.members);
-      expect(mainController.readyFor(10)).toEqual("Yes");
+      expect(mainController.readyFor("10")).toEqual("Yes");
     });
 
     it('takes in a raid size of 15 and returns Yes', function() {
       mainController.findRoles(apiJSON.members);
-      expect(mainController.readyFor(15)).toEqual("Yes");
+      expect(mainController.readyFor("15")).toEqual("Yes");
     });
 
     it('takes in a raid size of 20 and returns No', function() {
       mainController.findRoles(apiJSON.members);
-      expect(mainController.readyFor(20)).toEqual("No");
+      expect(mainController.readyFor("20")).toEqual("No");
     });
   });
 
@@ -117,18 +117,20 @@ describe('MainController', function() {
     });
   });
 
-  describe("missingRoles(raidSize)", function() {
-    it("sets the number of missing roles", function() {
-      mainController.findRoles(apiJSON.members);
-      mainController.missingRoles([3,5,12]);
-      expect(mainController.neededTanks).toEqual(1);
-    });
-  });
-
-  describe("missingTanks(neededTanks)", function() {
+  describe("#missingRoleCalc(role, raidSize)", function() {
     it('returns 0 if you have all the tanks you need', function() {
       mainController.findRoles(apiJSON.members);
-      expect(mainController.missingTanks(2)).toEqual(0);
+      expect(mainController.missingRoleCalc("tank", "10")).toEqual(0);
+    });
+
+    it('returns a number if you  don\'t have all the healers you need', function() {
+      mainController.findRoles(apiJSON.members);
+      expect(mainController.missingRoleCalc("healer", "20")).toEqual(1);
+    });
+
+    it('returns a number if you  don\'t have all the dps you need', function() {
+      mainController.findRoles(apiJSON.members);
+      expect(mainController.missingRoleCalc("dps", "30")).toEqual(11);
     });
   });
 
