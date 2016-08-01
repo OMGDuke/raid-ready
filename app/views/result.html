@@ -1,36 +1,62 @@
 <h1>RESULT</h1>
-<h3 id="guild-name">Guild Name: {{main.guildName}}</h3>
-<h3 id="server-name">Server Name: {{main.serverName}}</h3>
-<p id="member-count"> Members: {{main.members.length}}</p>
-<label for="singleSelect">Raid Size</label>
-<select name="singleSelect" ng-model="singleSelect" ng-selected="10">
-  <option value="10">10 Man</option>
-  <option value="15" ng-selected="selected">15 Man</option>
-  <option value="20">20 Man</option>
-  <option value="25">25 Man</option>
-  <option value="30">30 Man</option>
-</select><br>
-<h3 id="ready" ng-show="singleSelect">Ready for {{singleSelect}}s? {{main.readyFor(singleSelect)}}</h3>
-<h3 id="missing-tank" ng-show="singleSelect && main.missingRoleCalc('tank', singleSelect) > 0">{{main.missingRoleCalc('tank', singleSelect)}} Tank(s) Missing</h3>
-<h3 id="missing-heal" ng-show="singleSelect && main.missingRoleCalc('healer', singleSelect) > 0">{{main.missingRoleCalc('healer', singleSelect)}} Healer(s) Missing</h3>
-<h3 id="missing-dps" ng-show="singleSelect && main.missingRoleCalc('dps', singleSelect) > 0">{{main.missingRoleCalc('dps', singleSelect)}} DPS(s) Missing</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h3 id="guild-name">Guild Name: {{main.guildName}}</h3>
+      <h3 id="server-name">Server Name: {{main.serverName}}</h3>
+      <p id="member-count"> Members: {{main.members.length}}</p>
+    </div>
+    <div class="col-md-6 form-group">
+      <label for="singleSelect">Raid Size (Choose)</label>
+      <select name="singleSelect" ng-model="singleSelect" ng-selected="10" class="form-control">
+        <option value="10">10 Man</option>
+        <option value="15" ng-selected="selected">15 Man</option>
+        <option value="20">20 Man</option>
+        <option value="25">25 Man</option>
+        <option value="30">30 Man</option>
+      </select><br>
+      <h3 id="ready" ng-show="singleSelect">Ready for {{singleSelect}}s? {{main.readyFor(singleSelect)}}</h3>
+      <h3 id="missing-tank" ng-show="singleSelect && main.missingRoleCalc('tank', singleSelect) > 0">{{main.missingRoleCalc('tank', singleSelect)}} Tank(s) Missing</h3>
+      <h3 id="missing-heal" ng-show="singleSelect && main.missingRoleCalc('healer', singleSelect) > 0">{{main.missingRoleCalc('healer', singleSelect)}} Healer(s) Missing</h3>
+      <h3 id="missing-dps" ng-show="singleSelect && main.missingRoleCalc('dps', singleSelect) > 0">{{main.missingRoleCalc('dps', singleSelect)}} DPS(s) Missing</h3>
+    </div>
+  </div>
+</div>
 <h3>Tanks:</h3>
-<div ng-repeat="char in main.tanks">
-  <p id="tank-list-item">Name: {{char.character.name}}</p>
-  <p>Spec: {{char.character.spec.name}}</p>
-  <img src="http://render-api-eu.worldofwarcraft.com/static-render/eu/{{char.character.thumbnail}}" alt="Avatar" />
+<div class="container class-pane">
+  <div class="row">
+    <div ng-repeat="char in main.tanks" class="col-lg-3 col-md-4 col-sm-6 char-pane">
+      <p id="tank-list-item">{{char.character.name}}</p>
+      <p id="c{{char.character.class}}">{{char.character.spec.name}} {{main.findPlayerClass(char.character.class)}}</p>
+      <a ng-href="http://eu.battle.net/wow/en/character/{{main.serverName}}/{{char.character.name}}/simple">
+        <img ng-src="http://render-api-eu.worldofwarcraft.com/static-render/eu/{{char.character.thumbnail}}" err-src="assets/img/avatar-404.jpg" alt="Avatar" />
+      </a>
+    </div>
+  </div>
 </div>
 
 <h3>Healers:</h3>
-<div ng-repeat="char in main.healers">
-  <p id="healer-list-item">Name: {{char.character.name}}</p>
-  <p>Spec: {{char.character.spec.name}}</p>
-  <img src="http://render-api-eu.worldofwarcraft.com/static-render/eu/{{char.character.thumbnail}}" alt="Avatar" />
+<div class="container class-pane">
+  <div class="row">
+    <div ng-repeat="char in main.healers" class="col-lg-3 col-md-4 col-sm-6 char-pane">
+      <p id="healer-list-item">{{char.character.name}}</p>
+      <p id="c{{char.character.class}}">{{char.character.spec.name}} {{main.findPlayerClass(char.character.class)}}</p>
+      <a ng-href="http://eu.battle.net/wow/en/character/{{main.serverName}}/{{char.character.name}}/simple">
+        <img ng-src="http://render-api-eu.worldofwarcraft.com/static-render/eu/{{char.character.thumbnail}}" err-src="assets/img/avatar-404.jpg" alt="Avatar" />
+      </a>
+    </div>
+  </div>
 </div>
 
 <h3>DPS:</h3>
-<div ng-repeat="char in main.dps">
-  <p id="dps-list-item">Name: {{char.character.name}}</p>
-  <p>Spec: {{char.character.spec.name}}</p>
-  <img src="http://render-api-eu.worldofwarcraft.com/static-render/eu/{{char.character.thumbnail}}" alt="Avatar" />
+<div class="container class-pane">
+  <div class="row">
+    <div ng-repeat="char in main.dps" class="col-lg-3 col-md-4 col-sm-6 char-pane">
+      <p id="dps-list-item">{{char.character.name}}</p>
+      <p id="c{{char.character.class}}">{{char.character.spec.name}} {{main.findPlayerClass(char.character.class)}}</p>
+      <a ng-href="http://eu.battle.net/wow/en/character/{{main.serverName}}/{{char.character.name}}/simple">
+        <img ng-src="http://render-api-eu.worldofwarcraft.com/static-render/eu/{{char.character.thumbnail}}" err-src="assets/img/avatar-404.jpg" alt="Avatar" />
+      </a>
+    </div>
+  </div>
 </div>

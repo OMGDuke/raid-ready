@@ -134,6 +134,16 @@ describe('MainController', function() {
     });
   });
 
+  describe('#findPlayerClass()', function() {
+    it("takes in the interger 1 and returns warrior as a string", function() {
+      expect(mainController.findPlayerClass(1)).toEqual('Warrior');
+    });
+
+    it("takes in the interger 7 and returns Shaman as a string", function() {
+      expect(mainController.findPlayerClass(7)).toEqual('Shaman');
+    });
+  });
+
   var apiJSON = {realm:"Server1", name:"Name1", members:[{
     "character": {
       "name": "A",

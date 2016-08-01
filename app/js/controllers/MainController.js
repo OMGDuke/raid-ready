@@ -8,6 +8,20 @@ angular.module('raidReadyApp')
     self.dps = {};
     self.healers = {};
     var apiUrl = ["https://eu.api.battle.net/wow/guild/", "?fields=members&locale=en_GB&apikey="];
+    var playerClassHash = {
+      1: "Warrior",
+      2: "Paladin",
+      3: "Hunter",
+      4: "Rogue",
+      5: "Priest",
+      6: "Death Knight",
+      7: "Shaman",
+      8: "Mage",
+      9: "Warlock",
+      10: "Monk",
+      11: "Druid",
+      12: "Demon Hunter"
+    };
 
     self.searchForGuild = function(server, guild) {
       GuildService.getMembers(apiUrl, server, guild)
@@ -104,5 +118,9 @@ angular.module('raidReadyApp')
       } else if (raidSize === "30") {
         return [3, 6, 21];
       }
+    };
+
+    self.findPlayerClass = function(classInt) {
+      return playerClassHash[classInt];
     };
   });
