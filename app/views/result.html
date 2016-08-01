@@ -2,7 +2,28 @@
 <h3 id="guild-name">Guild Name: {{main.guildName}}</h3>
 <h3 id="server-name">Server Name: {{main.serverName}}</h3>
 <p id="member-count"> Members: {{main.members.length}}</p>
+<h3 id="ready-10">Ready for 10s? {{main.readyFor(10)}}</h3>
+<h3 id="ready-15">Ready for 15s? {{main.readyFor(15)}}</h3>
+<h3 id="ready-20">Ready for 20s? {{main.readyFor(20)}}</h3>
+<h3 id="ready-25">Ready for 25s? {{main.readyFor(25)}}</h3>
+<h3 id="ready-30">Ready for 30s? {{main.readyFor(30)}}</h3>
 <h3>Tanks:</h3>
 <div ng-repeat="char in main.tanks">
-  <p id="tank-list-item">Character Name: {{char.character.name}}</p>
+  <p id="tank-list-item">Name: {{char.character.name}}</p>
+  <p>Spec: {{char.character.spec.name}}</p>
+  <img src="http://render-api-eu.worldofwarcraft.com/static-render/eu/{{char.character.thumbnail}}" alt="Avatar" />
+</div>
+
+<h3>Healers:</h3>
+<div ng-repeat="char in main.healers">
+  <p id="healer-list-item">Name: {{char.character.name}}</p>
+  <p>Spec: {{char.character.spec.name}}</p>
+  <img src="http://render-api-eu.worldofwarcraft.com/static-render/eu/{{char.character.thumbnail}}" alt="Avatar" />
+</div>
+
+<h3>DPS:</h3>
+<div ng-repeat="char in main.dps">
+  <p id="dps-list-item">Name: {{char.character.name}}</p>
+  <p>Spec: {{char.character.spec.name}}</p>
+  <img src="http://render-api-eu.worldofwarcraft.com/static-render/eu/{{char.character.thumbnail}}" alt="Avatar" />
 </div>

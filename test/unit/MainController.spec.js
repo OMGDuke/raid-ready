@@ -83,6 +83,55 @@ describe('MainController', function() {
     });
   });
 
+  describe("#readyFor()", function() {
+    it('takes in a raid size of 10 and returns Yes', function() {
+      mainController.findRoles(apiJSON.members);
+      expect(mainController.readyFor(10)).toEqual("Yes");
+    });
+
+    it('takes in a raid size of 15 and returns Yes', function() {
+      mainController.findRoles(apiJSON.members);
+      expect(mainController.readyFor(15)).toEqual("Yes");
+    });
+
+    it('takes in a raid size of 20 and returns No', function() {
+      mainController.findRoles(apiJSON.members);
+      expect(mainController.readyFor(20)).toEqual("No");
+    });
+  });
+
+  describe("#numberCheck", function() {
+    it("returns true if you you have the correct members for a 10 man", function() {
+      mainController.findRoles(apiJSON.members);
+      expect(mainController.numberCheck(2, 3, 5)).toEqual(true);
+    });
+
+    it("returns true if you you have the correct members for a 15 man", function() {
+      mainController.findRoles(apiJSON.members);
+      expect(mainController.numberCheck(2, 4, 9)).toEqual(true);
+    });
+
+    it("returns false if you you have the incorrect members for a 20 man", function() {
+      mainController.findRoles(apiJSON.members);
+      expect(mainController.numberCheck(3, 5, 12)).toEqual(false);
+    });
+  });
+
+  describe("missingRoles(raidSize)", function() {
+    it("sets the number of missing roles", function() {
+      mainController.findRoles(apiJSON.members);
+      mainController.missingRoles([3,5,12]);
+      expect(mainController.neededTanks).toEqual(1);
+    });
+  });
+
+  describe("missingTanks(neededTanks)", function() {
+    it('returns 0 if you have all the tanks you need', function() {
+      mainController.findRoles(apiJSON.members);
+      expect(mainController.missingTanks(2)).toEqual(0);
+    });
+  });
+
   var apiJSON = {realm:"Server1", name:"Name1", members:[{
     "character": {
       "name": "A",

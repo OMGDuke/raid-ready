@@ -61,4 +61,30 @@ angular.module('raidReadyApp')
         return obj.character.spec.role === "HEALING";
       });
     };
+
+    self.readyFor = function(raidSize) {
+      if(raidSize === 10) {
+        return self.numberCheck(2, 3, 5) ? "Yes" : "No";
+      } else if (raidSize === 15) {
+        return self.numberCheck(2, 4, 9) ? "Yes" : "No";
+      } else if (raidSize === 20) {
+        return self.numberCheck(3, 5, 12) ? "Yes" : "No";
+      } else if (raidSize === 25) {
+        return self.numberCheck(3, 5, 12) ? "Yes" : "No";
+      } else if (raidSize === 30) {
+        return self.numberCheck(3, 5, 12) ? "Yes" : "No";
+      }
+    };
+
+    self.numberCheck = function(tanks, healers, dps) {
+      return self.tanks.length >= tanks && self.healers.length >= healers && self.dps.length >= dps;
+    };
+
+    self.missingRoles = function(requirements) {
+      self.neededTanks = self.missingTanks(requirements[0]);
+    };
+
+    self.missingTanks = function(neededTanks) {
+      return neededTanks - self.tanks.length;
+    };
   });

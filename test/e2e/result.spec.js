@@ -21,4 +21,30 @@ describe("raidReadyApp", function () {
       });
     });
   });
+
+  describe("Healer list", function() {
+    it('contains a list of all Healers in the guild', function() {
+      browser.findElements(protractor.By.css('#healer-list-item'))
+      .then(function(elems) {
+        var length = elems.length;
+        expect(length).toEqual(3);
+      });
+    });
+  });
+
+  describe("DPS list", function() {
+    it('contains a list of all DPS in the guild', function() {
+      browser.findElements(protractor.By.css('#dps-list-item'))
+      .then(function(elems) {
+        var length = elems.length;
+        expect(length).toEqual(15);
+      });
+    });
+  });
+
+  describe("Ready for?", function() {
+    it("tells you whether you're ready for 10s", function() {
+      expect($('#ready-10').getText()).toMatch("Ready for 10s? Yes");
+    });
+  });
 });
