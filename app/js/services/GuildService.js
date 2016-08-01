@@ -2,7 +2,7 @@ angular.module('raidReadyApp')
   .service('GuildService', ['$http', function($http){
 
     var self = this;
-    var apiKey = "1234";
+    var apiKey = process.env.WOW_API;
 
     self.getMembers = function(apiUrl, server, guild) {
       var formattedUrl = _formatUrl(apiUrl, server, guild);

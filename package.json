@@ -7,13 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cd app && ../node_modules/http-server/bin/http-server",
     "webdriver-manager": "./node_modules/protractor/bin/webdriver-manager",
-    "protractor": "./node_modules/protractor/bin/protractor"
+    "protractor": "./node_modules/protractor/bin/protractor",
+    "postinstall": "./node_modules/bower/bin/bower install"
   },
   "author": "Alex Robertson (alex@omgduke.com)",
   "license": "ISC",
   "dependencies": {
     "bower": "^1.7.9",
-    "dotenv": "^2.0.0",
     "http-server": "^0.9.0",
     "protractor": "^4.0.2"
   },
