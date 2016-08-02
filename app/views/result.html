@@ -24,10 +24,10 @@
   <div class="row">
     <div ng-repeat="char in main.tanks" class="col-lg-3 col-md-4 col-sm-6">
       <a ng-href="http://eu.battle.net/wow/en/character/{{main.serverName}}/{{char.character.name}}/simple">
-        <div class="char-pane">
+        <div class="char-pane wow zoomIn">
           <h4 id="tank-list-item">{{char.character.name}}</h4>
           <h4 id="c{{char.character.class}}">{{char.character.spec.name}} {{main.findPlayerClass(char.character.class)}}</h4>
-          <img class="avatar" ng-src="http://render-api-eu.worldofwarcraft.com/static-render/eu/{{char.character.thumbnail}}" err-src="assets/img/avatar-404.jpg" alt="Avatar" />
+          <img id="tank-test" class="avatar" ng-src="http://render-api-eu.worldofwarcraft.com/static-render/eu/{{char.character.thumbnail}}" err-src="assets/img/avatar-404.jpg" alt="Avatar" />
         </div>
       </a>
     </div>
@@ -39,7 +39,7 @@
   <div class="row">
     <div ng-repeat="char in main.healers" class="col-lg-3 col-md-4 col-sm-6">
       <a ng-href="http://eu.battle.net/wow/en/character/{{main.serverName}}/{{char.character.name}}/simple">
-        <div class="char-pane">
+        <div class="char-pane wow zoomIn">
           <h4 id="healer-list-item">{{char.character.name}}</h4>
           <h4 id="c{{char.character.class}}">{{char.character.spec.name}} {{main.findPlayerClass(char.character.class)}}</h4>
           <img class="avatar" ng-src="http://render-api-eu.worldofwarcraft.com/static-render/eu/{{char.character.thumbnail}}" err-src="assets/img/avatar-404.jpg" alt="Avatar" />
@@ -54,7 +54,7 @@
   <div class="row">
     <div ng-repeat="char in main.dps" class="col-lg-3 col-md-4 col-sm-6">
       <a ng-href="http://eu.battle.net/wow/en/character/{{main.serverName}}/{{char.character.name}}/simple">
-        <div class="char-pane">
+        <div class="char-pane wow zoomIn">
           <h4 id="dps-list-item">{{char.character.name}}</h4>
           <h4 id="c{{char.character.class}}">{{char.character.spec.name}} {{main.findPlayerClass(char.character.class)}}</h4>
           <img class="avatar" ng-src="http://render-api-eu.worldofwarcraft.com/static-render/eu/{{char.character.thumbnail}}" err-src="assets/img/avatar-404.jpg" alt="Avatar" />

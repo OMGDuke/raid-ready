@@ -46,6 +46,7 @@ h1, h4 {
   background-color: #3c3b49;
   margin: 20px 20px 20px 20px;
   color: #fff;
+  -webkit-animation-duration: 2s;
 }
 
 .avatar {
@@ -59,6 +60,8 @@ h1, h4 {
   width: 500px;
   text-align: center;
   margin-top:20px;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-delay: 0.5s;
 }
 
 #c1 {
