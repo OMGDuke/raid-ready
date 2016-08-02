@@ -2,17 +2,34 @@ angular.module('raidReadyApp')
   .controller('MainController', function($state, GuildService){
 
     var self = this;
-    self.members = {};
-    self.level100Members = {};
-    self.tanks = {};
-    self.dps = {};
-    self.healers = {};
     var apiUrl = "https://raid-ready-api.herokuapp.com/bnet?server=";
     var playerClassHash = {
       1: "Warrior", 2: "Paladin", 3: "Hunter", 4: "Rogue", 5: "Priest",
       6: "Death Knight", 7: "Shaman", 8: "Mage", 9: "Warlock", 10: "Monk",
       11: "Druid", 12: "Demon Hunter"
     };
+
+    self.members = {};
+    self.level100Members = {};
+    self.tanks = {};
+    self.dps = {};
+    self.healers = {};
+    self.options = [{
+      name: '10 Man',
+      value: '10'
+    }, {
+      name: '15 Man',
+      value: '15'
+    },{
+      name: '20 Man',
+      value: '20'
+    },{
+      name: '25 Man',
+      value: '25'
+    },{
+      name: '30 Man',
+      value: '30'
+    }];
 
     self.searchForGuild = function(server, guild) {
       GuildService.getMembers(apiUrl, server, guild)

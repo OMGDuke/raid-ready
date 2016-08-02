@@ -8,17 +8,13 @@
     </div>
     <div class="col-md-6 form-group">
       <label for="singleSelect">Raid Size (Choose)</label>
-      <select name="singleSelect" ng-model="singleSelect" ng-selected="10" class="form-control">
-        <option value="10">10 Man</option>
-        <option value="15" ng-selected="selected">15 Man</option>
-        <option value="20">20 Man</option>
-        <option value="25">25 Man</option>
-        <option value="30">30 Man</option>
-      </select><br>
-      <h3 id="ready" ng-show="singleSelect">Ready for {{singleSelect}}s? {{main.readyFor(singleSelect)}}</h3>
-      <h3 id="missing-tank" ng-show="singleSelect && main.missingRoleCalc('tank', singleSelect) > 0">{{main.missingRoleCalc('tank', singleSelect)}} Tank(s) Missing</h3>
-      <h3 id="missing-heal" ng-show="singleSelect && main.missingRoleCalc('healer', singleSelect) > 0">{{main.missingRoleCalc('healer', singleSelect)}} Healer(s) Missing</h3>
-      <h3 id="missing-dps" ng-show="singleSelect && main.missingRoleCalc('dps', singleSelect) > 0">{{main.missingRoleCalc('dps', singleSelect)}} DPS(s) Missing</h3>
+      <select ng-init="singleSelect = main.options[1]" ng-model="singleSelect"
+        ng-options="option.name for option in main.options" class="form-control">
+      </select>
+      <h3 id="ready" ng-show="singleSelect.value">Ready for {{singleSelect.value}}s? {{main.readyFor(singleSelect.value)}}</h3>
+      <h3 id="missing-tank" ng-show="singleSelect.value && main.missingRoleCalc('tank', singleSelect.value) > 0">{{main.missingRoleCalc('tank', singleSelect.value)}} Tank(s) Missing</h3>
+      <h3 id="missing-heal" ng-show="singleSelect.value && main.missingRoleCalc('healer', singleSelect.value) > 0">{{main.missingRoleCalc('healer', singleSelect.value)}} Healer(s) Missing</h3>
+      <h3 id="missing-dps" ng-show="singleSelect.value && main.missingRoleCalc('dps', singleSelect.value) > 0">{{main.missingRoleCalc('dps', singleSelect.value)}} DPS(s) Missing</h3>
     </div>
   </div>
 </div>
