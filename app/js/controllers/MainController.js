@@ -24,7 +24,8 @@ angular.module('raidReadyApp')
       GuildService.getMembers(apiUrl, server, guild)
       .then(function(response) {
         self.setData(response);
-        self.findCharactersWithSpecs(response.members);
+        try { self.findCharactersWithSpecs(response.members); }
+        catch(err) { self.error = "Please enter a valid Server and Guild Name"; }
         self.findLevelAppropriate(self.filteredChars);
         self.findRoles(self.level100Members);
         $state.go("result");

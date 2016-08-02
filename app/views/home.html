@@ -1,15 +1,16 @@
 <div id="search-form">
   <form ng-submit="main.searchForGuild(server, guild)" role="form">
     <div class="form-group">
-      <h3>Server Name:</h3>
+      <h1>Server Name:</h1>
       <input class="search-box" id="server-input" type="search" required="required" ng-model="server">
     </div>
     <div class="form-group">
-      <h3>Guild Name:</h3>
+      <h1>Guild Name:</h1>
       <input class="search-box" id="guild-input" type="search" required="required" ng-model="guild">
     </div>
-    <button class="btn btn-primary" id="check-btn" type="submit" class="button">Check my Guild</button>
+    <h4>{{main.error}}</h4>
+    <button class="btn btn-primary" id="check-btn" type="submit" class="button"><h4>Check my Guild</h4></button>
   </form>
   <br>
-  <button type="button" class="btn btn-primary" id="or-btn" ng-click="main.searchForGuild('Draenor', 'Over Raided')">Over Raided</button>
+  <button type="button" class="btn btn-primary" id="or-btn" ng-click="main.searchForGuild('Draenor', 'Over Raided')"><h4>Demo: Over Raided</h4></button>
 </div>
