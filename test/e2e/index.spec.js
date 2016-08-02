@@ -8,8 +8,9 @@ describe("raidReadyApp", function () {
       expect(browser.getTitle()).toEqual("Raid Ready");
     });
 
-    it('should have the app title on the page', function () {
-      expect($('#header').getText()).toMatch('Raid Ready');
+    it('should have the app logo on the page', function () {
+      logo = element(by.css("img[src*='assets/img/logo.jpg']"));
+      expect(logo.isPresent()).toBe(true);
     });
   });
 

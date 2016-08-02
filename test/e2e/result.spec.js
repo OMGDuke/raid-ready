@@ -8,7 +8,7 @@ describe("raidReadyApp", function () {
 
   describe("Member Count", function() {
     it("Displays how many members there are", function() {
-      expect($('#member-count').getText()).toMatch("Members: 53");
+      expect($('#member-count').getText()).toMatch("Members: 52");
     });
   });
 

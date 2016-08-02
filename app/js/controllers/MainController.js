@@ -9,18 +9,9 @@ angular.module('raidReadyApp')
     self.healers = {};
     var apiUrl = "https://raid-ready-api.herokuapp.com/bnet?server=";
     var playerClassHash = {
-      1: "Warrior",
-      2: "Paladin",
-      3: "Hunter",
-      4: "Rogue",
-      5: "Priest",
-      6: "Death Knight",
-      7: "Shaman",
-      8: "Mage",
-      9: "Warlock",
-      10: "Monk",
-      11: "Druid",
-      12: "Demon Hunter"
+      1: "Warrior", 2: "Paladin", 3: "Hunter", 4: "Rogue", 5: "Priest",
+      6: "Death Knight", 7: "Shaman", 8: "Mage", 9: "Warlock", 10: "Monk",
+      11: "Druid", 12: "Demon Hunter"
     };
 
     self.searchForGuild = function(server, guild) {
