@@ -1,12 +1,11 @@
 # Raid Ready
 
 ### Description
-Check if your WoW guild is ready to raid. Enter your server and guild name for a breakdown based on roles.
+Check if your WoW guild is ready to raid. Enter your server and guild name for a breakdown based on roles. A live demo of Raid Ready is available [*here*](https://raid-ready.herokuapp.com).
 
 ### Installation
 - Clone this repo.
 - Run `npm install`
-- Add your Battle.net API key to ./app/js/services/GuildService.js line 5
 - Run `npm start`
 - Visit http://localhost:8080
 
@@ -18,8 +17,7 @@ Check if your WoW guild is ready to raid. Enter your server and guild name for a
 
 ### Todo
 - Add restful routing eg http://localhost:8080/serverName/guildName. Currently a page refresh or clicking a player to visit their profile causes result data to be lost.
-- Add raid encounter specific breakdowns
-- Move api calls to a backend  server to hide api key in requests.
+- Add raid encounter specific breakdowns.
 - Update to 110 for Legion.
 - Add a filter based on guild rank to ensure alts aren't included.
 - Add ability to choose your region.
