@@ -7,7 +7,7 @@ angular.module('raidReadyApp')
     self.tanks = {};
     self.dps = {};
     self.healers = {};
-    var apiUrl = ["https://eu.api.battle.net/wow/guild/", "?fields=members&locale=en_GB&apikey="];
+    var apiUrl = "https://raid-ready-api.herokuapp.com/bnet?server=";
     var playerClassHash = {
       1: "Warrior",
       2: "Paladin",
