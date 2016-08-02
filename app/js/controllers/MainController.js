@@ -14,22 +14,11 @@ angular.module('raidReadyApp')
     self.tanks = {};
     self.dps = {};
     self.healers = {};
-    self.options = [{
-      name: '10 Man',
-      value: '10'
-    }, {
-      name: '15 Man',
-      value: '15'
-    },{
-      name: '20 Man',
-      value: '20'
-    },{
-      name: '25 Man',
-      value: '25'
-    },{
-      name: '30 Man',
-      value: '30'
-    }];
+    self.options = [{ name: '10 Man', value: '10' },
+    { name: '15 Man', value: '15' },
+    { name: '20 Man', value: '20' },
+    { name: '25 Man', value: '25' },
+    { name: '30 Man', value: '30' }];
 
     self.searchForGuild = function(server, guild) {
       GuildService.getMembers(apiUrl, server, guild)
