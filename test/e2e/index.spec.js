@@ -9,7 +9,7 @@ describe("raidReadyApp", function () {
     });
 
     it('should have the app logo on the page', function () {
-      logo = element(by.css("img[src*='assets/img/logo.jpg']"));
+      logo = element(by.css("img[src*='assets/img/logo.png']"));
       expect(logo.isPresent()).toBe(true);
     });
   });

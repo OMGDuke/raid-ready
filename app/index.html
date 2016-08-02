@@ -19,10 +19,12 @@
     <base href="/">
   </head>
   <body ng-app='raidReadyApp'>
-    <div class=" img-responsive">
-      <img id="logo" src="assets/img/logo.jpg" alt="Raid Ready Logo" />
+    <div class="container fill">
+      <div class=" img-responsive">
+        <img id="logo" src="assets/img/logo.png" alt="Raid Ready Logo" />
+      </div>
+      <section ui-view ng-controller="MainController as main"></section>
     </div>
-    <section ui-view ng-controller="MainController as main"></section>
     <script src="assets/js/bootstrap.min.js"></script>
   </body>
 </html>

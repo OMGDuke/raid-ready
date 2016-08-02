@@ -43,8 +43,8 @@ describe("raidReadyApp", function () {
   });
 
   describe("Ready for?", function() {
-    it("starts with no ready for", function() {
-      expect(element(by.id('ready')).isDisplayed()).toBeFalsy();
+    it("starts with a ready for", function() {
+      expect(element(by.id('ready')).isDisplayed()).toBeTruthy();
     });
 
     it("tells you whether you're ready for 10s", function() {
@@ -59,9 +59,9 @@ describe("raidReadyApp", function () {
   });
 
   describe("Missing", function() {
-    it("starts with no missing", function() {
+    it("starts with a missing healer", function() {
       expect(element(by.id('missing-tank')).isDisplayed()).toBeFalsy();
-      expect(element(by.id('missing-heal')).isDisplayed()).toBeFalsy();
+      expect(element(by.id('missing-heal')).isDisplayed()).toBeTruthy();
       expect(element(by.id('missing-dps')).isDisplayed()).toBeFalsy();
     });
 

@@ -1,8 +1,25 @@
-body {
+html, body {
   background-color: black;
   color: white;
   text-align: center;
-    font-family: 'Reem Kufi', sans-serif;
+  font-family: 'Reem Kufi', sans-serif;
+  height: 100%;
+}
+
+h1 {
+  text-shadow:
+  -1px -1px 0 #000,
+  1px -1px 0 #000,
+  -1px 1px 0 #000,
+  1px 1px 0 #000;
+}
+
+h3 {
+  text-shadow:
+  -1px -1px 0 #000,
+  1px -1px 0 #000,
+  -1px 1px 0 #000,
+  1px 1px 0 #000;
 }
 
 .search-box {
@@ -14,21 +31,50 @@ body {
   margin-bottom: 10px;
   border: 3px;
   border-style: solid;
-  border-color: white;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: #3c3b49;
+  border-color: black;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: #22222a;
+}
+
+/*.container {
+  min-height: 100%;
+}*/
+.fill {
+    min-height: 100%;
+    background-color: #3c3b49;
 }
 
 .char-pane {
   padding-bottom: 20px;
   padding-top: 20px;
+  border: 3px;
+  border-style: solid;
+  border-color: black;
+  background-color: #3c3b49;
+  margin: 20px 20px 20px 20px;
+  color: #fff;
+}
+
+.avatar {
+  border: 2px;
+  border-style: solid;
+  border-color: black;
+}
+
+.class-text {
+  text-shadow:
+  -1px -1px 0 #000,
+  1px -1px 0 #000,
+  -1px 1px 0 #000,
+  1px 1px 0 #000;
 }
 
 #logo {
   max-width: 80%;
   width: 500px;
   text-align: center;
+  margin-top:20px;
 }
 
 #c1 {
