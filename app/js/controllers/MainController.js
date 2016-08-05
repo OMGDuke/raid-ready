@@ -8,6 +8,13 @@ angular.module('raidReadyApp')
       6: "Death Knight", 7: "Shaman", 8: "Mage", 9: "Warlock", 10: "Monk",
       11: "Druid", 12: "Demon Hunter"
     };
+    var raidBreakdown = {
+      10: [2, 3, 5],
+      15: [2, 4, 9],
+      20: [3, 5, 12],
+      25: [3, 6, 16],
+      30: [3, 6, 21]
+    };
 
     self.members = {};
     self.level100Members = {};
@@ -24,10 +31,8 @@ angular.module('raidReadyApp')
       GuildService.getMembers(apiUrl, server, guild)
       .then(function(response) {
         self.setData(response);
-        try { self.findCharactersWithSpecs(response.members); }
+        try { self.findRoles(self.filterMembers(response.members)); }
         catch(err) { self.error = "Please enter a valid Server and Guild Name"; }
-        self.findLevelAppropriate(self.filteredChars);
-        self.findRoles(self.level100Members);
         $state.go("result");
       });
     };
@@ -38,15 +43,9 @@ angular.module('raidReadyApp')
       self.members = response.members;
     };
 
-    self.findCharactersWithSpecs = function(members) {
-      self.filteredChars = members.filter(function(obj) {
-        return !!obj.character.spec;
-      });
-    };
-
-    self.findLevelAppropriate = function(members) {
-      self.level100Members = members.filter(function( obj ) {
-        return obj.character.level === 100;
+    self.filterMembers = function(members) {
+      return members.filter(function(obj) {
+        return obj.character.level === 100 && !!obj.character.spec;
       });
     };
 
@@ -75,21 +74,11 @@ angular.module('raidReadyApp')
     };
 
     self.readyFor = function(raidSize) {
-      if(raidSize === "10") {
-        return self.numberCheck(2, 3, 5) ? "Yes" : "No";
-      } else if (raidSize === "15") {
-        return self.numberCheck(2, 4, 9) ? "Yes" : "No";
-      } else if (raidSize === "20") {
-        return self.numberCheck(3, 5, 12) ? "Yes" : "No";
-      } else if (raidSize === "25") {
-        return self.numberCheck(3, 6, 16) ? "Yes" : "No";
-      } else if (raidSize === "30") {
-        return self.numberCheck(3, 6, 21) ? "Yes" : "No";
-      }
+      return self.numberCheck(raidBreakdown[raidSize]) ? "Yes" : "No";
     };
 
-    self.numberCheck = function(tanks, healers, dps) {
-      return self.tanks.length >= tanks && self.healers.length >= healers && self.dps.length >= dps;
+    self.numberCheck = function(raidBreakdown) {
+      return self.tanks.length >= raidBreakdown[0] && self.healers.length >= raidBreakdown[1] && self.dps.length >= raidBreakdown[2];
     };
 
 
@@ -105,17 +94,7 @@ angular.module('raidReadyApp')
 
 
     self.neededRoles = function(raidSize) {
-      if(raidSize === "10") {
-        return [2, 3, 5];
-      } else if (raidSize === "15") {
-        return [2, 4, 9];
-      } else if (raidSize === "20") {
-        return [3, 5, 12];
-      } else if (raidSize === "25") {
-        return [3, 6, 16];
-      } else if (raidSize === "30") {
-        return [3, 6, 21];
-      }
+      return raidBreakdown[raidSize];
     };
 
     self.findPlayerClass = function(classInt) {

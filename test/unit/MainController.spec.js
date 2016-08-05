@@ -48,17 +48,9 @@ describe('MainController', function() {
     });
   });
 
-  describe('#findLevelAppropriate', function() {
-    it('returns a list of characters at level 100', function() {
-      mainController.findLevelAppropriate(apiJSON.members);
-      expect(mainController.level100Members.length).toEqual(15);
-    });
-  });
-
-  describe('#findCharactersWithSpecs', function() {
-    it('returns a list of characters who have the spec key', function() {
-      mainController.findCharactersWithSpecs(apiJSON.members);
-      expect(mainController.filteredChars.length).toEqual(16);
+  describe('#filterMembers', function() {
+    it('returns a list of characters at level 100 and with a spec key', function() {
+      expect(mainController.filterMembers(apiJSON.members).length).toEqual(15);
     });
   });
 
@@ -103,17 +95,17 @@ describe('MainController', function() {
   describe("#numberCheck", function() {
     it("returns true if you you have the correct members for a 10 man", function() {
       mainController.findRoles(apiJSON.members);
-      expect(mainController.numberCheck(2, 3, 5)).toEqual(true);
+      expect(mainController.numberCheck([2, 3, 5])).toEqual(true);
     });
 
     it("returns true if you you have the correct members for a 15 man", function() {
       mainController.findRoles(apiJSON.members);
-      expect(mainController.numberCheck(2, 4, 9)).toEqual(true);
+      expect(mainController.numberCheck([2, 4, 9])).toEqual(true);
     });
 
     it("returns false if you you have the incorrect members for a 20 man", function() {
       mainController.findRoles(apiJSON.members);
-      expect(mainController.numberCheck(3, 5, 12)).toEqual(false);
+      expect(mainController.numberCheck([3, 5, 12])).toEqual(false);
     });
   });
 
