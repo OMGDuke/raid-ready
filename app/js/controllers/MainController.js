@@ -84,17 +84,12 @@ angular.module('raidReadyApp')
 
     self.missingRoleCalc = function(role, raidSize) {
       if(role === "tank") {
-        return self.neededRoles(raidSize)[0] - self.tanks.length;
+        return raidBreakdown[raidSize][0] - self.tanks.length;
       } else if(role === "healer") {
-        return self.neededRoles(raidSize)[1] - self.healers.length;
+        return raidBreakdown[raidSize][1] - self.healers.length;
       } else if(role === "dps") {
-        return self.neededRoles(raidSize)[2] - self.dps.length;
+        return raidBreakdown[raidSize][2] - self.dps.length;
       }
-    };
-
-
-    self.neededRoles = function(raidSize) {
-      return raidBreakdown[raidSize];
     };
 
     self.findPlayerClass = function(classInt) {

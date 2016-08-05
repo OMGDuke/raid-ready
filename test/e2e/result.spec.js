@@ -8,7 +8,7 @@ describe("raidReadyApp", function () {
 
   describe("Member Count", function() {
     it("Displays how many members there are", function() {
-      expect($('#member-count').getText()).toMatch("Members: 52");
+      expect($('#member-count').getText()).toMatch("Members: 53");
     });
   });
 
@@ -17,7 +17,7 @@ describe("raidReadyApp", function () {
       browser.findElements(protractor.By.css('#tank-list-item'))
       .then(function(elems) {
         var length = elems.length;
-        expect(length).toEqual(4);
+        expect(length).toEqual(6);
       });
     });
   });
@@ -27,7 +27,7 @@ describe("raidReadyApp", function () {
       browser.findElements(protractor.By.css('#healer-list-item'))
       .then(function(elems) {
         var length = elems.length;
-        expect(length).toEqual(3);
+        expect(length).toEqual(4);
       });
     });
   });
@@ -37,7 +37,7 @@ describe("raidReadyApp", function () {
       browser.findElements(protractor.By.css('#dps-list-item'))
       .then(function(elems) {
         var length = elems.length;
-        expect(length).toEqual(15);
+        expect(length).toEqual(16);
       });
     });
   });
@@ -59,15 +59,15 @@ describe("raidReadyApp", function () {
   });
 
   describe("Missing", function() {
-    it("starts with a missing healer", function() {
+    it("starts with no missing", function() {
       expect(element(by.id('missing-tank')).isDisplayed()).toBeFalsy();
-      expect(element(by.id('missing-heal')).isDisplayed()).toBeTruthy();
+      expect(element(by.id('missing-heal')).isDisplayed()).toBeFalsy();
       expect(element(by.id('missing-dps')).isDisplayed()).toBeFalsy();
     });
 
-    it("shows 2 missing healers for 20 man", function() {
+    it("shows 1 missing healer for 20 man", function() {
       element(by.cssContainingText('option', '20')).click();
-      expect($('#missing-heal').getText()).toEqual('2 Healer(s) Missing');
+      expect($('#missing-heal').getText()).toEqual('1 Healer(s) Missing');
     });
   });
 });
