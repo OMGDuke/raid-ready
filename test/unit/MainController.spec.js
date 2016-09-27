@@ -144,6 +144,12 @@ describe('MainController', function() {
     });
   });
 
+  describe('#memberCount()', function() {
+    it('returns the number of members based on rank filter', function() {
+      expect(mainController.memberCount(apiJSON.members, 7)).toEqual(12);
+    });
+  });
+
   var apiJSON = {realm:"Server1", name:"Name1", members:[{
     "character": {
       "name": "A",

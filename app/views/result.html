@@ -4,7 +4,7 @@
   <div class="col-md-6">
     <h4 id="guild-name">Guild Name: {{main.guildName}}</h4>
     <h4 id="server-name">Server Name: {{main.serverName}}</h4>
-    <h4 id="member-count"> Members: {{main.members.length}}</h4>
+    <h4 id="member-count"> Members: {{main.memberCount(main.members, selectedRank)}}</h4>
     <label for="singleSelect"><h4>Alt Filtering (Input a number)</h4></label>
     <input id="rank-select" ng-model="selectedRank">
     <h5>Input a rank number to filter out Alt/Social ranks. Generally GM = 0,

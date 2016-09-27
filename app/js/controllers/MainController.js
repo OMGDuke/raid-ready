@@ -99,4 +99,11 @@ angular.module('raidReadyApp')
     $scope.filterByRank = function(element) {
       return $scope.selectedRank > element.rank;
     };
+
+    self.memberCount = function(selectedGroup, selectedRank) {
+      membersWithRank = selectedGroup.filter(function( obj ) {
+        return obj.rank < selectedRank;
+      });
+      return membersWithRank.length;
+    };
   });

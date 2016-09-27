@@ -105,5 +105,11 @@ describe("raidReadyApp", function () {
         expect(length).toEqual(3);
       });
     });
+
+    it('Filters total members down to 21', function() {
+      $('#rank-select').clear();
+      $('#rank-select').sendKeys("7");
+      expect($('#member-count').getText()).toEqual('Members: 21');
+    });
   });
 });
