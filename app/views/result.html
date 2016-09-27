@@ -16,13 +16,15 @@
     <h4 id="missing-tank" ng-show="singleSelect.value && main.missingRoleCalc('tank', singleSelect.value) > 0">{{main.missingRoleCalc('tank', singleSelect.value)}} Tank(s) Missing</h4>
     <h4 id="missing-heal" ng-show="singleSelect.value && main.missingRoleCalc('healer', singleSelect.value) > 0">{{main.missingRoleCalc('healer', singleSelect.value)}} Healer(s) Missing</h4>
     <h4 id="missing-dps" ng-show="singleSelect.value && main.missingRoleCalc('dps', singleSelect.value) > 0">{{main.missingRoleCalc('dps', singleSelect.value)}} DPS(s) Missing</h4>
+    <label for="singleSelect"><h4>Alt Filtering (Choose)</h4></label>
+    <input id="rank-select" ng-model="selectedRank">
   </div>
 </div>
 <!-- Tanks Frame -->
 <h1>Tanks:</h1>
 <div class="class-pane">
   <div class="row">
-    <div ng-repeat="char in main.tanks" class="col-lg-3 col-md-4 col-sm-6">
+    <div ng-repeat="char in main.tanks | filter:filterByRank" class="col-lg-3 col-md-4 col-sm-6">
       <a ng-href="http://eu.battle.net/wow/en/character/{{main.serverName}}/{{char.character.name}}/simple">
         <div class="char-pane wow zoomIn">
           <h4 id="tank-list-item">{{char.character.name}}</h4>
@@ -37,7 +39,7 @@
 <h1>Healers:</h1>
 <div class="class-pane">
   <div class="row">
-    <div ng-repeat="char in main.healers" class="col-lg-3 col-md-4 col-sm-6">
+    <div ng-repeat="char in main.healers | filter:filterByRank" class="col-lg-3 col-md-4 col-sm-6">
       <a ng-href="http://eu.battle.net/wow/en/character/{{main.serverName}}/{{char.character.name}}/simple">
         <div class="char-pane wow zoomIn">
           <h4 id="healer-list-item">{{char.character.name}}</h4>
@@ -52,7 +54,7 @@
 <h1>DPS:</h1>
 <div class="class-pane">
   <div class="row">
-    <div ng-repeat="char in main.dps" class="col-lg-3 col-md-4 col-sm-6">
+    <div ng-repeat="char in main.dps | filter:filterByRank" class="col-lg-3 col-md-4 col-sm-6">
       <a ng-href="http://eu.battle.net/wow/en/character/{{main.serverName}}/{{char.character.name}}/simple">
         <div class="char-pane wow zoomIn">
           <h4 id="dps-list-item">{{char.character.name}}</h4>

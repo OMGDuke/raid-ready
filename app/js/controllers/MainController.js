@@ -1,5 +1,5 @@
 angular.module('raidReadyApp')
-  .controller('MainController', function($state, GuildService){
+  .controller('MainController', function($state, GuildService, $scope){
 
     var self = this;
     var apiUrl = "https://raid-ready-api.herokuapp.com/bnet?server=";
@@ -25,6 +25,7 @@ angular.module('raidReadyApp')
     { name: '20 Man', value: '20' },
     { name: '25 Man', value: '25' },
     { name: '30 Man', value: '30' }];
+    $scope.selectedRank = 100;
 
     self.searchForGuild = function(server, guild) {
       GuildService.getMembers(apiUrl, server, guild)
@@ -95,7 +96,7 @@ angular.module('raidReadyApp')
       return playerClassHash[classInt];
     };
 
-    self.filterByRank = function(chosenRank, character) {
-      return chosenRank > character.rank;
+    $scope.filterByRank = function(element) {
+      return $scope.selectedRank > element.rank;
     };
   });

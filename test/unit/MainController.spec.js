@@ -14,10 +14,12 @@ describe('MainController', function() {
     });
   });
 
-  beforeEach(inject(function($controller) {
+  beforeEach(inject(function($controller, $rootScope) {
     spyOn(mockGuildService, 'getMembers')
       .and.callThrough();
+    scope = $rootScope.$new();
     mainController = $controller('MainController', {
+      $scope: scope
     });
   }));
 
@@ -138,7 +140,7 @@ describe('MainController', function() {
 
   describe('#filterByRank()', function() {
     it('returns true if the character rank is below the selected rank', function() {
-      mainController.filterByRank(6, apiJSON.members[1]);
+      scope.filterByRank(apiJSON.members[1]);
     });
   });
 

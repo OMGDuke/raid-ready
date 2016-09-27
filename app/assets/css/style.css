@@ -29,6 +29,11 @@ h1, h4 {
   background-color: #22222a;
 }
 
+#rank-select {
+  border-radius: 5px;
+  color:black;
+}
+
 /*.container {
   min-height: 100%;
 }*/

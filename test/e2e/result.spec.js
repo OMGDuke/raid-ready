@@ -70,4 +70,40 @@ describe("raidReadyApp", function () {
       expect($('#missing-heal').getText()).toEqual('1 Healer(s) Missing');
     });
   });
+
+  describe("Rank Filter", function() {
+    it("Starts with a default value of 100", function() {
+      expect($('#rank-select').getAttribute('value')).toEqual('100');
+    });
+
+    it('Filters tanks down to 2', function() {
+      $('#rank-select').clear();
+      $('#rank-select').sendKeys("3");
+      browser.findElements(protractor.By.css('#tank-list-item'))
+      .then(function(elems) {
+        var length = elems.length;
+        expect(length).toEqual(2);
+      });
+    });
+
+    it('Filters healers down to 1', function() {
+      $('#rank-select').clear();
+      $('#rank-select').sendKeys("4");
+      browser.findElements(protractor.By.css('#healer-list-item'))
+      .then(function(elems) {
+        var length = elems.length;
+        expect(length).toEqual(1);
+      });
+    });
+
+    it('Filters dps down to 3', function() {
+      $('#rank-select').clear();
+      $('#rank-select').sendKeys("5");
+      browser.findElements(protractor.By.css('#dps-list-item'))
+      .then(function(elems) {
+        var length = elems.length;
+        expect(length).toEqual(3);
+      });
+    });
+  });
 });
