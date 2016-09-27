@@ -94,4 +94,8 @@ angular.module('raidReadyApp')
     self.findPlayerClass = function(classInt) {
       return playerClassHash[classInt];
     };
+
+    self.filterByRank = function(chosenRank, character) {
+      return chosenRank > character.rank;
+    };
   });

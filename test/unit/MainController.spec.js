@@ -136,6 +136,12 @@ describe('MainController', function() {
     });
   });
 
+  describe('#filterByRank()', function() {
+    it('returns true if the character rank is below the selected rank', function() {
+      mainController.filterByRank(6, apiJSON.members[1]);
+    });
+  });
+
   var apiJSON = {realm:"Server1", name:"Name1", members:[{
     "character": {
       "name": "A",
