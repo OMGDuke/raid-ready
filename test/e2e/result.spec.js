@@ -8,7 +8,7 @@ describe("raidReadyApp", function () {
 
   describe("Member Count", function() {
     it("Displays how many members there are", function() {
-      expect($('#member-count').getText()).toMatch("Members: 53");
+      expect($('#member-count').getText()).toMatch("Members: 86");
     });
   });
 
@@ -17,7 +17,7 @@ describe("raidReadyApp", function () {
       browser.findElements(protractor.By.css('#tank-list-item'))
       .then(function(elems) {
         var length = elems.length;
-        expect(length).toEqual(6);
+        expect(length).toEqual(3);
       });
     });
   });
@@ -27,7 +27,7 @@ describe("raidReadyApp", function () {
       browser.findElements(protractor.By.css('#healer-list-item'))
       .then(function(elems) {
         var length = elems.length;
-        expect(length).toEqual(4);
+        expect(length).toEqual(5);
       });
     });
   });
@@ -37,7 +37,7 @@ describe("raidReadyApp", function () {
       browser.findElements(protractor.By.css('#dps-list-item'))
       .then(function(elems) {
         var length = elems.length;
-        expect(length).toEqual(16);
+        expect(length).toEqual(22);
       });
     });
   });
@@ -54,7 +54,7 @@ describe("raidReadyApp", function () {
     it("hides 10s message when you select another size", function() {
       element(by.cssContainingText('option', '10')).click();
       element(by.cssContainingText('option', '20')).click();
-      expect($('#ready').getText()).toEqual('Ready for 20s? No');
+      expect($('#ready').getText()).toEqual('Ready for 20s? Yes');
     });
   });
 
@@ -65,8 +65,8 @@ describe("raidReadyApp", function () {
       expect(element(by.id('missing-dps')).isDisplayed()).toBeFalsy();
     });
 
-    it("shows 1 missing healer for 20 man", function() {
-      element(by.cssContainingText('option', '20')).click();
+    it("shows 1 missing healer for 30 man", function() {
+      element(by.cssContainingText('option', '30')).click();
       expect($('#missing-heal').getText()).toEqual('1 Healer(s) Missing');
     });
   });

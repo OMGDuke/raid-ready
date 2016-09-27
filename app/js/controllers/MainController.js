@@ -9,15 +9,14 @@ angular.module('raidReadyApp')
       11: "Druid", 12: "Demon Hunter"
     };
     var raidBreakdown = {
-      10: [2, 3, 5],
-      15: [2, 4, 9],
-      20: [3, 5, 12],
-      25: [3, 6, 16],
-      30: [3, 6, 21]
+      10: [2, 2, 6],
+      15: [2, 3, 10],
+      20: [2, 4, 14],
+      25: [2, 5, 18],
+      30: [2, 6, 22]
     };
 
     self.members = {};
-    self.level100Members = {};
     self.tanks = {};
     self.dps = {};
     self.healers = {};
@@ -45,7 +44,7 @@ angular.module('raidReadyApp')
 
     self.filterMembers = function(members) {
       return members.filter(function(obj) {
-        return obj.character.level === 100 && !!obj.character.spec;
+        return obj.character.level === 110 && !!obj.character.spec;
       });
     };
 

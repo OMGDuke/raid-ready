@@ -49,7 +49,7 @@ describe('MainController', function() {
   });
 
   describe('#filterMembers', function() {
-    it('returns a list of characters at level 100 and with a spec key', function() {
+    it('returns a list of characters at level 110 and with a spec key', function() {
       expect(mainController.filterMembers(apiJSON.members).length).toEqual(15);
     });
   });
@@ -69,7 +69,7 @@ describe('MainController', function() {
   });
 
   describe('#findHealers', function() {
-    it('returns a list of characters with the DPS role', function() {
+    it('returns a list of characters with the HEALING role', function() {
       mainController.findHealers(apiJSON.members);
       expect(mainController.healers.length).toEqual(4);
     });
@@ -115,14 +115,14 @@ describe('MainController', function() {
       expect(mainController.missingRoleCalc("tank", "10")).toEqual(0);
     });
 
-    it('returns a number if you  don\'t have all the healers you need', function() {
+    it('returns 0 if you have all the healers you need', function() {
       mainController.findRoles(apiJSON.members);
-      expect(mainController.missingRoleCalc("healer", "20")).toEqual(1);
+      expect(mainController.missingRoleCalc("healer", "20")).toEqual(0);
     });
 
     it('returns a number if you  don\'t have all the dps you need', function() {
       mainController.findRoles(apiJSON.members);
-      expect(mainController.missingRoleCalc("dps", "30")).toEqual(11);
+      expect(mainController.missingRoleCalc("dps", "30")).toEqual(12);
     });
   });
 
@@ -144,7 +144,7 @@ describe('MainController', function() {
        "class": 2,
        "race": 10,
        "gender": 0,
-       "level": 100,
+       "level": 110,
        "achievementPoints": 2650,
        "thumbnail": "gnomeregan/189/87609533-avatar.jpg",
        "spec": {
@@ -168,7 +168,7 @@ describe('MainController', function() {
              "class": 7,
              "race": 9,
              "gender": 1,
-             "level": 100,
+             "level": 110,
              "achievementPoints": 7980,
              "thumbnail": "gnomeregan/157/88055709-avatar.jpg",
              "spec": {
@@ -192,7 +192,7 @@ describe('MainController', function() {
              "class": 9,
              "race": 2,
              "gender": 1,
-             "level": 100,
+             "level": 110,
              "achievementPoints": 10840,
              "thumbnail": "gnomeregan/144/88199312-avatar.jpg",
              "spec": {
@@ -216,7 +216,7 @@ describe('MainController', function() {
              "class": 6,
              "race": 2,
              "gender": 0,
-             "level": 100,
+             "level": 110,
              "achievementPoints": 4295,
              "thumbnail": "gnomeregan/82/93354066-avatar.jpg",
              "spec": {
@@ -240,7 +240,7 @@ describe('MainController', function() {
              "class": 10,
              "race": 26,
              "gender": 1,
-             "level": 100,
+             "level": 110,
              "achievementPoints": 8040,
              "thumbnail": "gnomeregan/114/96531826-avatar.jpg",
              "spec": {
@@ -264,7 +264,7 @@ describe('MainController', function() {
              "class": 6,
              "race": 2,
              "gender": 0,
-             "level": 100,
+             "level": 110,
              "achievementPoints": 9220,
              "thumbnail": "gnomeregan/22/103898646-avatar.jpg",
              "spec": {
@@ -288,7 +288,7 @@ describe('MainController', function() {
              "class": 11,
              "race": 8,
              "gender": 0,
-             "level": 100,
+             "level": 110,
              "achievementPoints": 19135,
              "thumbnail": "gnomeregan/41/104001833-avatar.jpg",
              "spec": {
@@ -312,7 +312,7 @@ describe('MainController', function() {
              "class": 2,
              "race": 10,
              "gender": 0,
-             "level": 100,
+             "level": 110,
              "achievementPoints": 9220,
              "thumbnail": "gnomeregan/203/104008139-avatar.jpg",
              "spec": {
@@ -336,7 +336,7 @@ describe('MainController', function() {
            "class": 4,
            "race": 5,
            "gender": 1,
-           "level": 100,
+           "level": 110,
            "achievementPoints": 55,
            "thumbnail": "gnomeregan/22/104027414-avatar.jpg",
            "spec": {
@@ -360,7 +360,7 @@ describe('MainController', function() {
              "class": 4,
              "race": 5,
              "gender": 1,
-             "level": 100,
+             "level": 110,
              "achievementPoints": 55,
              "thumbnail": "gnomeregan/22/104027414-avatar.jpg",
              "spec": {
@@ -384,7 +384,7 @@ describe('MainController', function() {
              "class": 2,
              "race": 10,
              "gender": 0,
-             "level": 100,
+             "level": 110,
              "achievementPoints": 8940,
              "thumbnail": "gnomeregan/238/104048110-avatar.jpg",
              "spec": {
@@ -408,7 +408,7 @@ describe('MainController', function() {
              "class": 11,
              "race": 8,
              "gender": 1,
-             "level": 100,
+             "level": 110,
              "achievementPoints": 8040,
              "thumbnail": "gnomeregan/152/104055704-avatar.jpg",
              "spec": {
@@ -432,7 +432,7 @@ describe('MainController', function() {
              "class": 6,
              "race": 10,
              "gender": 0,
-             "level": 100,
+             "level": 110,
              "achievementPoints": 8280,
              "thumbnail": "gnomeregan/219/104056027-avatar.jpg",
              "spec": {
@@ -456,7 +456,7 @@ describe('MainController', function() {
              "class": 3,
              "race": 9,
              "gender": 0,
-             "level": 100,
+             "level": 110,
              "achievementPoints": 8275,
              "thumbnail": "gnomeregan/181/104059061-avatar.jpg",
              "spec": {
@@ -480,7 +480,7 @@ describe('MainController', function() {
              "class": 5,
              "race": 5,
              "gender": 0,
-             "level": 100,
+             "level": 110,
              "achievementPoints": 9220,
              "thumbnail": "gnomeregan/8/104114952-avatar.jpg",
              "spec": {
