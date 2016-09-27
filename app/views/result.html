@@ -5,6 +5,11 @@
     <h4 id="guild-name">Guild Name: {{main.guildName}}</h4>
     <h4 id="server-name">Server Name: {{main.serverName}}</h4>
     <h4 id="member-count"> Members: {{main.members.length}}</h4>
+    <label for="singleSelect"><h4>Alt Filtering (Input a number)</h4></label>
+    <input id="rank-select" ng-model="selectedRank">
+    <h5>Input a rank number to filter out Alt/Social ranks. Generally GM = 0,
+      Officer = 1, Veteran = 2 etc but every guild is different. Leave the
+      default value to include all members.</h5>
   </div>
 <!-- Select Box and missing info -->
   <div class="col-md-6 form-group">
@@ -16,8 +21,6 @@
     <h4 id="missing-tank" ng-show="singleSelect.value && main.missingRoleCalc('tank', singleSelect.value) > 0">{{main.missingRoleCalc('tank', singleSelect.value)}} Tank(s) Missing</h4>
     <h4 id="missing-heal" ng-show="singleSelect.value && main.missingRoleCalc('healer', singleSelect.value) > 0">{{main.missingRoleCalc('healer', singleSelect.value)}} Healer(s) Missing</h4>
     <h4 id="missing-dps" ng-show="singleSelect.value && main.missingRoleCalc('dps', singleSelect.value) > 0">{{main.missingRoleCalc('dps', singleSelect.value)}} DPS(s) Missing</h4>
-    <label for="singleSelect"><h4>Alt Filtering (Choose)</h4></label>
-    <input id="rank-select" ng-model="selectedRank">
   </div>
 </div>
 <!-- Tanks Frame -->
